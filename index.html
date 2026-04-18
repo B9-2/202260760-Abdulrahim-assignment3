@@ -21,12 +21,19 @@
             <section id="projects">
                 <h2>Projects:</h2>
 
+                <label for="sortProjects">Sort projects:</label>
+                <select id="sortProjects">
+                    <option value="default">Default order</option>
+                    <option value="az">A to Z</option>
+                    <option value="za">Z to A</option>
+                </select>
+
                 <input type="text" id="projectSearch" placeholder="Search projects...">
                 <p id="emptyMessage" style="display: none;">No projects found.</p>
 
-                <ol>
+                <ol id="projectList">
                     <li>
-                        <strong>Backstore Management System</strong>
+                        <strong>Bookstore Management System</strong>
                         <p>Database-Driven Web Application used to manage bookstore inventory through relation database along with backend functionalities</p>
                         <img src="assets/images/BookstoreMySQL.png" alt="MySQL database screenshot" width="400">
                     </li>
@@ -36,6 +43,14 @@
                         <img src="assets/images/JupyterNB-PythonSVM.jpeg" alt="Python SVM Code screenshot" width="400">
                     </li>
                 </ol>
+            </section>
+
+            <section id="github-projects">
+                <h2>GitHub Repositories:</h2>
+                <p>Here are some of my public repositories from GitHub.</p>
+                <button id="loadReposBtn" type="button">Load GitHub Repositories</button>
+                <p id="repoStatus"></p>
+                <div id="repoList"></div>
             </section>
 
             <section id="contact">
@@ -53,7 +68,7 @@
 
                     <div>
                     <label for="myMessage">Message:</label>
-                    <textarea name="myMessage" id="myMessage" rows="5" placeholder="I would like to cantact you regarding..." required></textarea>
+                    <textarea name="myMessage" id="myMessage" rows="5" placeholder="I would like to contact you regarding..." required></textarea>
                     </div>
 
                     <button type="submit">Confirm</button>
