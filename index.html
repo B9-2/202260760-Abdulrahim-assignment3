@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>My Portfolio</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script defer src="js/script.js"></script>
+    </head>
+    <body>
+        <main id="container">
+            <h1>My Portfolio | Abdulrahim Albijadi | 202260760</h1>
+            <button id="themeToggle" type="button">Dark mode</button>
+
+            <section id="about">
+                <h2>About Me:</h2>
+                <p>I am Abdulrahim Albijadi, a Software Engineer student at KFUPM.</p>
+                <p>I am currently taking my junior year and studying SWE363.</p>
+                <p>Currently learning HTML, CSS, and JavaScript.</p>
+            </section>
+
+            <section id="projects">
+                <h2>Projects:</h2>
+
+                <input type="text" id="projectSearch" placeholder="Search projects...">
+                <p id="emptyMessage" style="display: none;">No projects found.</p>
+
+                <ol>
+                    <li>
+                        <strong>Backstore Management System</strong>
+                        <p>Database-Driven Web Application used to manage bookstore inventory through relation database along with backend functionalities</p>
+                        <img src="assets/images/BookstoreMySQL.png" alt="MySQL database screenshot" width="400">
+                    </li>
+                    <li>
+                        <strong>Job Application Outcome Prediction System</strong>
+                        <p>Machine Learning Classification Project built using ML models, such as KNN, SVM, and DNN to predict job application outcomes</p>
+                        <img src="assets/images/JupyterNB-PythonSVM.jpeg" alt="Python SVM Code screenshot" width="400">
+                    </li>
+                </ol>
+            </section>
+
+            <section id="contact">
+                <h2>Contact:</h2>
+                <form id="contactForm">
+                    <div>
+                    <label for="myName">Name:</label>
+                    <input type="text" name="myName" id="myName" placeholder="Adolf Rizzler" required>
+                    </div>
+
+                    <div>
+                    <label for="myEmail">Email:</label>
+                    <input type="email" name="myEmail" id="myEmail" placeholder="Joe@example.com" required>
+                    </div>
+
+                    <div>
+                    <label for="myMessage">Message:</label>
+                    <textarea name="myMessage" id="myMessage" rows="5" placeholder="I would like to cantact you regarding..." required></textarea>
+                    </div>
+
+                    <button type="submit">Confirm</button>
+                </form>
+                <p id="formMessage"></p>
+            </section>
+        </main>
+    </body>
+</html>

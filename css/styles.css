@@ -1,0 +1,111 @@
+/* Headings */
+h1 {
+    text-align: center;
+}
+/* Theme toggle button */
+#themeToggle {
+    max-width: 90px;
+    display: block;
+    margin-left: auto;
+    margin-right: 25px;
+    padding: 1px 2px;
+    cursor: pointer;
+}
+/* Dark mode */
+.dark {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+.dark #about, .dark #projects, .dark #contact {
+  border-top: 1px solid #444;
+}
+.dark #contact button {
+  color: white;
+  background-color: #333;
+}
+/* Page container */
+#container {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* Section boxes */
+#about, #projects, #contact {
+    border-top: 1px solid rgb(191, 191, 191);
+    padding: 10px;
+    margin: 15px;
+}
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 30px 40px;
+}
+/* Contact form */
+#contact form {
+    max-width: 450px;
+}
+#contact label {
+    display: block;
+    margin: 10px;
+}
+#contact input, #contact textarea{
+    width: 50%;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+/* Submit button */
+#contact button {
+    color: black;
+    background-color: rgb(185, 184, 184);
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+/* Mobile responsive */
+@media (max-width: 600px) {
+  #contact input, #contact textarea {
+    width: 100%;
+  }
+
+  img {
+    margin: 10px auto;
+    display: block;
+  }
+}
+/* Smooth transition for theme */
+body {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+/* Button hover effect */
+button:hover {
+  opacity: 0.8;
+}
+/* Section fade-in */
+#about, #project, #contact {
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+  form {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#formMessage {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+#emptyMessage {
+  color: gray;
+  font-style: italic;
+}
