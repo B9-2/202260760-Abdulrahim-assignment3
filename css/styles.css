@@ -200,6 +200,7 @@ select {
   border-radius: 12px;
   padding: 16px;
   background: #fafafa;
+  min-height: 280px;
 }
 
 .project-content p {
@@ -219,10 +220,12 @@ select {
 
 .project-card img {
   width: 100%;
-  max-width: 100%;
-  height: auto;
+  height: 230px;
+  object-fit: cover;
+  object-position: top center;
   border-radius: 10px;
   border: 1px solid #d9dde3;
+  background: #ffffff;
 }
 
 /* Repository grid */
@@ -338,6 +341,7 @@ select {
 
 .dark .project-card img {
   border-color: #4b5563;
+  background: #1f2937;
 }
 
 .dark .repo-card a {
@@ -372,6 +376,11 @@ select {
 
   .project-card {
     grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .project-card img {
+    height: 220px;
   }
 
   #themeToggle,
@@ -398,5 +407,9 @@ select {
 
   h2 {
     font-size: 1.5rem;
+  }
+
+  .project-card img {
+    height: 200px;
   }
 }
