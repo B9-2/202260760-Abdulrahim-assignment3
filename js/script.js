@@ -1,14 +1,47 @@
+// Save visitor name
+const visitorName = document.getElementById("visitorName");
+const saveNameBtn = document.getElementById("saveNameBtn");
+const welcomeMessage = document.getElementById("welcomeMessage");
+
+const savedName = localStorage.getItem("visitorName");
+if (savedName) {
+  welcomeMessage.textContent = `Welcome, ${savedName}!`;
+  visitorName.value = savedName;
+}
+
+function saveVisitorName() {
+  const nameValue = visitorName.value.trim();
+
+  if (nameValue === "") {
+    welcomeMessage.textContent = "Please enter your name.";
+    welcomeMessage.style.color = "red";
+    return;
+  }
+
+  localStorage.setItem("visitorName", nameValue);
+  welcomeMessage.textContent = `Welcome, ${nameValue}!`;
+  welcomeMessage.style.color = "inherit";
+}
+
+saveNameBtn.addEventListener("click", saveVisitorName);
+
+visitorName.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    saveVisitorName();
+  }
+});
+
 // Load saved theme
-if (localStorage.getItem("theme") === "dark"){
+const toggleBtn = document.getElementById("themeToggle");
+
+if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
-  document.getElementById("themeToggle").textContent =  "Light mode";
+  toggleBtn.textContent = "Light mode";
 }
 
 // Dark/Light mode toggle
-const toggleBtn = document.getElementById("themeToggle");
-
 toggleBtn.addEventListener("click", () => {
-
   document.body.classList.toggle("dark");
 
   if (document.body.classList.contains("dark")) {
@@ -20,64 +53,57 @@ toggleBtn.addEventListener("click", () => {
   }
 });
 
-// Search project inputs
+// Search, filter, and sort projects
 const searchInput = document.getElementById("projectSearch");
-const projectlist = document.querySelectorAll("#projects ol li");
+const filterProjects = document.getElementById("filterProjects");
+const sortProjects = document.getElementById("sortProjects");
+const projectList = document.getElementById("projectList");
 const emptyMessage = document.getElementById("emptyMessage");
 
-searchInput.addEventListener("input", () => {
+const originalProjects = Array.from(projectList.querySelectorAll(".project-card"));
 
-  const searchValue = searchInput.value.toLowerCase();
-  let visible = false;
+function updateProjects() {
+  const searchValue = searchInput.value.toLowerCase().trim();
+  const selectedCategory = filterProjects.value;
+  const sortValue = sortProjects.value;
 
-  projectlist.forEach((item) => {
+  let projects = [...originalProjects];
 
-    const text = item.textContent.toLowerCase();
+  projects = projects.filter((project) => {
+    const title = project.dataset.title.toLowerCase();
+    const text = project.textContent.toLowerCase();
+    const category = project.dataset.category;
 
-    if(text.includes(searchValue)) {
-      item.style.display = "list-item";
-      visible = true;
-    }
-    else {
-      item.style.display = "none";
-    }
+    const matchesSearch =
+      title.includes(searchValue) || text.includes(searchValue);
+    const matchesCategory =
+      selectedCategory === "all" || category === selectedCategory;
 
+    return matchesSearch && matchesCategory;
   });
 
-  if(!visible) {
-    emptyMessage.style.display = "block";
+  if (sortValue === "az") {
+    projects.sort((a, b) => a.dataset.title.localeCompare(b.dataset.title));
+  } else if (sortValue === "za") {
+    projects.sort((a, b) => b.dataset.title.localeCompare(a.dataset.title));
   }
-  else {
+
+  projectList.innerHTML = "";
+
+  projects.forEach((project) => {
+    projectList.appendChild(project);
+  });
+
+  if (projects.length === 0) {
+    emptyMessage.style.display = "block";
+  } else {
     emptyMessage.style.display = "none";
   }
-})
+}
 
-// Sort projects
-const sortProjects = document.getElementById("sortProjects");
-const projectListElement = document.getElementById("projectList");
-
-const originalProjects = Array.from(projectListElement.children);
-
-sortProjects.addEventListener("change", () => {
-  const projectsArray = Array.from(projectListElement.children);
-
-  if (sortProjects.value === "az") {
-    projectsArray.sort((a, b) => a.textContent.localeCompare(b.textContent));
-  } else if (sortProjects.value === "za") {
-    projectsArray.sort((a, b) => b.textContent.localeCompare(a.textContent));
-  } else {
-    projectListElement.innerHTML = "";
-    originalProjects.forEach((item) => {
-      projectListElement.appendChild(item);
-    });
-    return;
-  }
-
-  projectListElement.innerHTML = "";
-  projectsArray.forEach((item) => {
-    projectListElement.appendChild(item);
-  });
-});
+searchInput.addEventListener("input", updateProjects);
+filterProjects.addEventListener("change", updateProjects);
+sortProjects.addEventListener("change", updateProjects);
 
 // Contact form validation
 const contactForm = document.getElementById("contactForm");
@@ -128,8 +154,9 @@ const loadReposBtn = document.getElementById("loadReposBtn");
 const repoStatus = document.getElementById("repoStatus");
 const repoList = document.getElementById("repoList");
 
-loadReposBtn.addEventListener("click", async () => {
+async function loadRepositories() {
   repoStatus.textContent = "Loading repositories...";
+  repoStatus.style.color = "inherit";
   repoList.innerHTML = "";
 
   try {
@@ -146,24 +173,37 @@ loadReposBtn.addEventListener("click", async () => {
       return;
     }
 
+    repos.sort((a, b) => a.name.localeCompare(b.name));
+
     repoStatus.textContent = "";
 
-    const list = document.createElement("ul");
-
     repos.forEach((repo) => {
-      const item = document.createElement("li");
+      const repoCard = document.createElement("article");
+      repoCard.className = "repo-card";
 
-      item.innerHTML = `
-        <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-        <p>${repo.description ? repo.description : "No description available."}</p>
+      repoCard.innerHTML = `
+        <h3>
+          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">${repo.name}</a>
+        </h3>
+        <p class="repo-description">
+          ${repo.description ? repo.description : "No description available."}
+        </p>
+        <p class="repo-meta">
+          ${repo.language ? `Main language: ${repo.language}` : "Language not specified"}
+        </p>
       `;
 
-      list.appendChild(item);
+      repoList.appendChild(repoCard);
     });
-
-    repoList.appendChild(list);
-
   } catch (error) {
-    repoStatus.textContent = "Could not load GitHub repositories. Please try again later.";
+    repoStatus.textContent =
+      "Could not load GitHub repositories. Please try again later.";
+    repoStatus.style.color = "red";
   }
-});
+}
+
+loadReposBtn.addEventListener("click", loadRepositories);
+
+// Run on page load
+updateProjects();
+loadRepositories();

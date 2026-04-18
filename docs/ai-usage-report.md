@@ -1,42 +1,47 @@
-# AI Usage Report (Assignment 2)
+# AI Usage Report (Assignment 3)
 
 ## Tools Used & Use Cases
 ### ChatGPT
-- **HTML structure:** Helped me extend the portfolio by adding new elements like search input and feedback messages.
-- **Form creation:** Helped me improve the contact form by adding validation and user feedback messages.
-- **CSS improvements:** Suggested small UI improvements like hover effects and smoother appearance.
+- **Planning features:** Helped me break down the Assignment 3 requirements and decide which features to add to the portfolio.
+- **HTML structure:** Helped me improve the page structure by adding new sections and organizing the layout better.
+- **CSS improvements:** Helped me improve the UI with cleaner spacing, cards, dark mode styling, responsive layout, and better overall consistency.
 - **JavaScript features:**
-  - Helped me implement dark/light mode toggle with `localStorage`
-  - Helped me build a live project search filter
-  - Helped me implement form validation and user feedback
-- **Debugging:** Helped me fix small issues in JavaScript logic and improve code clarity.
-- **ReadMe documents:** Helped me update and organize README, technical documentation, and AI report.
+  - Helped me implement dark/light mode with `localStorage`
+  - Helped me add visitor name saving with `localStorage`
+  - Helped me build project search, filter, and sort features
+  - Helped me improve contact form validation
+  - Helped me integrate the GitHub API to load repositories dynamically
+- **Debugging:** Helped me fix logic issues, especially while working on filtering, sorting, and UI behavior.
+- **Documentation:** Helped me organize and improve the README, technical documentation, and AI usage report.
 
-### [Other tool if used, otherwise delete]
-- **GitHub** — I created a repository for the assignment and managed files/commits.
-- **Visual Studio Code (VSC)** — I used VSC for writing and organizing all project files (HTML, CSS, JS, docs).
+### Other tools used
+- **GitHub** — I used GitHub to create the repository, manage commits, and publish the project.
+- **Visual Studio Code (VS Code)** — I used VS Code to write, edit, test, and organize all project files.
 
 ## Benefits & Challenges
 **Benefits**
-- Saved time by providing working examples for JavaScript features.
-- Helped me understand how to implement interactivity (search filter, form validation).
-- Made it easier to debug and improve code structure.
+- Helped me plan the assignment step by step instead of trying to do everything at once.
+- Made it easier to improve the JavaScript logic for features like search, filtering, sorting, and API loading.
+- Helped me improve the interface and make the website more organized and user-friendly.
+- Saved time while debugging and refining the project.
 
 **Challenges / Limitations**
-- Some suggestions needed modification to match my existing code and assignment requirements.
-- I had to test everything in the browser to make sure it works correctly.
-- AI does not always match my exact structure, so I had to adjust IDs and elements.
-- Some features (like filtering and validation) required understanding before using them.
+- Some suggestions needed changes to match my own file structure and assignment requirements.
+- I still had to test features carefully in the browser, because not every change worked correctly the first time.
+- Some parts, especially the project filtering and sorting, needed multiple fixes before they worked as intended.
+- I had to make sure the final result stayed simple and suitable for a student assignment, not overdesigned.
 
 ## Learning Outcomes
-- Learned how to use `localStorage` to store user preferences.
-- Improved understanding of JavaScript events (`click`, `input`, `submit`).
-- Learned how to filter content dynamically using `includes()`.
-- Learned how to validate form inputs and provide user feedback.
-- Improved debugging skills using browser tools.
+- Learned how to use `localStorage` for more than one feature, such as theme saving and visitor name saving.
+- Improved understanding of JavaScript events like `click`, `input`, `change`, `submit`, and keyboard events.
+- Learned how to combine search, filter, and sort logic in one section.
+- Learned how to fetch and display data from an external API.
+- Improved understanding of responsive UI design and how CSS affects usability.
+- Improved debugging and testing skills while checking the behavior of different features together.
 
 ## Responsible Use & Modifications
-- I **reviewed and tested all AI suggestions** before using them.
-- I **modified the code** to fit my project structure and requirements.
-- I made sure I understand how each feature works before including it.
-- I used AI as a support tool for learning and problem solving, not as a replacement for my work.
+- I reviewed and tested the suggested ideas before adding them to my project.
+- I adjusted the structure and logic to match my own project and assignment requirements.
+- I made changes whenever something did not work correctly or did not fit the style I wanted.
+- I made sure I understood the features and how they work before keeping them in the final version.
+- I used AI as a support tool for problem-solving, debugging, and improving the project workflow.
