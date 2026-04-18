@@ -166,14 +166,16 @@ async function loadRepositories() {
       throw new Error("Failed to fetch repositories.");
     }
 
-    const repos = await response.json();
+    let repos = await response.json();
+
+    repos = repos.filter((repo) => repo.name !== "202260760-Abdulrahim-assignment2");
+
+    repos.sort((a, b) => a.name.localeCompare(b.name));
 
     if (repos.length === 0) {
       repoStatus.textContent = "No repositories found.";
       return;
     }
-
-    repos.sort((a, b) => a.name.localeCompare(b.name));
 
     repoStatus.textContent = "";
 
