@@ -12,17 +12,12 @@ The website still includes the main sections of a portfolio website such as Abou
 - Contact form requiring name, email, and a message
 
 ### New Features (Assignment 3)
-- Dark/light mode toggle with saved preference using localStorage
+- Dark/light mode with saved preference using localStorage
 - Visitor name saving with localStorage
-- Saving the visitor name by button click or pressing Enter
-- Project search that updates while typing
-- Project filtering by category
-- Project sorting by title
-- Empty state message when no projects match the search/filter
-- Contact form validation with better checks and user feedback
-- GitHub API integration to load public repositories dynamically
-- Improved UI with cleaner cards, spacing, and responsive layout
-- Better user experience with hover effects, transitions, and auto-loaded GitHub repositories
+- Project search, filtering, and sorting
+- Contact form validation with user feedback
+- GitHub API integration to load repositories dynamically
+- Improved UI with cleaner layout, responsive design, and better overall user experience
 
 ## Setup (Run Locally)
 1. Download or clone this repository.
